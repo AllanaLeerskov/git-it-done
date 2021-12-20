@@ -1,8 +1,13 @@
-var getUserRepos = function() {
-    var response = fetch("https://api.github.com/users/octocat/repos").then(function(response)) {
-        console.log("inside", response)
-    };
-    console.log("outside");
-};
+var getUserRepos = function(user) {
+    //format the githun api url
+var apiUrl = "https://api.github.com/users/" + user + "/repos";
 
-getUserRepos(); 
+//make request to the url
+fetch(apiUrl).then(function(response) {
+    response.json().then(function(data) {
+        console.log(data);
+        });
+    });
+}; 
+
+getUserRepos("allanaleerskov");
